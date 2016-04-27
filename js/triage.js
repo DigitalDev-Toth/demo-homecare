@@ -12,7 +12,7 @@ $(document).ready(function() {
         if (this.id === 'asma' || this.id === 'diabetes' || this.id === 'pregnant' || this.id === 'hemorragia') {
             var msg = "";
             if (this.id === 'asma') msg = 'Paciente con asma';
-            if (this.id === 'diabetes') msg = 'Paciente con asma';
+            if (this.id === 'diabetes') msg = 'Paciente con diabetes';
             if (this.id === 'pregnant') msg = 'Paciente Embarazada';
             if (this.id === 'hemorragia') msg = 'Paciente con hemorragia';
             alert(msg);
