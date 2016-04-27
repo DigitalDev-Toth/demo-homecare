@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  
+ <!-- <style type="text/css">
+    .wrapper {
+        text-align: center;
+    }
+    .wrapper ul {
+      display:table; 
+      margin:0 auto;
+    }
+</style>-->
+
+  <title>Toth</title>
+</head>
+<body> 
+  <header>
+     <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">Configuración</a></li>
+        <li><a href="login.html">Cerrar sesión</a></li>
+    </ul>
+     <nav class="top-nav teal">
+      <div class="container">
+        <a href="home.html"><img src="../images/toth_logo.png" alt="" style="height: 30px;margin-top: 15px;margin-left: 10px;"> </a>
+        <a href="home.html" class="brand-logo center">Homecare</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opciones<i class="material-icons right">arrow_drop_down</i></a></li> 
+          </ul>
+      </div>
+     </nav>
+      <div class="container">
+      <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+      </div>
+      <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+
+        <div class="row">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="../images/icon-user-default.png" alt="" class="  circle responsive-img center-block activator" style="width: 80%  ;">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><span id='patientName'></span><i class="material-icons right">more_vert</i></span>
+                        <p id="patientRut"></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Ficha<i class="material-icons right">close</i></span>
+                        <p>
+
+                            <p><strong>Sexo: </strong><span id="patientSex"></span> </p>
+                            <p><strong>Edad: </strong><span id="patientBday"></span> </p>
+                            <a href="profile.html" class="waves-effect waves-teal"><i class="material-icons">zoom_in</i>Mas información</a>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <li class="bold"><a href="documents.html" class="waves-effect waves-teal"><i class="material-icons">library_books</i>Mis estudios</a></li>
+        <li class="bold"><a href="updateDocuments.html" class="waves-effect waves-teal"><i class="material-icons">note_add</i>Subir imagenes</a></li>
+        <li class="bold"><a href="telemedicina.html" class="waves-effect waves-teal"><i class="material-icons">add_to_queue</i>Telemedicina</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-teal"><i class="material-icons">local_hospital</i>Medicamentos</a></li>
+        <li class="bold"><a href="triage.html" class="waves-effect waves-teal"><i class="material-icons">perm_contact_calendar</i>Triage</a></li>
+      </ul>
+  </header>
+
+  <!--  Scripts-->
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+  $(".dropdown-button").dropdown();
+
+    });
+
+    
+
+
+
+  </script>
+
+  </body>
+</html>

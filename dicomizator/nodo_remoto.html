@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Nodo Remoto</title>
+    <style type="text/css">
+    .upper {
+        text-transform: uppercase;
+    }
+    </style>
+
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+
+    <!-- Bootstrap CSS -->
+    <link href="//netdna.bootstrapcdn.com/bootstrap/3.1.1/css/bootstrap.min.css" rel="stylesheet">
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+            <script src="https://oss.maxcdn.com/libs/html5shiv/3.7.0/html5shiv.js"></script>
+            <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
+        <![endif]-->
+</head>
+
+<body>
+    <?php include 'navbar.html'; ?>
+    <div class="container">
+        <legend>
+            <h1 class="text-center">Crear Nodo Remoto</h1>
+        </legend>
+        <div class="panel panel-primary">
+            <div class="panel-body">
+                <div class="row">
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">Nombre:</span>
+                            <input type="text" id="name" class="form-control" placeholder="Nombre">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">IP:</span>
+                            <input type="text" id="ip" class="form-control" placeholder="IP">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">AET:</span>
+                            <input type="text" id="aetitle" required="required" class="form-control upper" placeholder="AETITLE">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">Puerto:</span>
+                            <input type="number" id="port" class="form-control" onkeyup="if (/\D/g.test(this.value)) this.value = this.value.replace(/\D/g,'')" placeholder="PUERTO">
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div class="input-group">
+                            <span class="input-group-addon">Envio Automatico:</span>
+                            <select name="" id="send" class="form-control">
+                                <option value="">-- Seleccione --</option>
+                                <option value="Si">Si</option>
+                                <option value="No">No</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+                        <br>
+                        <button id="test" class="btn btn-info">Probar Conexión</button>
+                    </div>
+                    <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+                        <br>
+                        <div id="msg"></div>
+                        <div id="result" class="form-control" disabled="disabled" contenteditable="false" style="height: 200px;"></div>
+                    </div>
+
+                    <legend class="text-center"><i style="color:#B2B1BB;" class="fa fa-heartbeat"></i>
+                    </legend>
+                    <div class="col-md-2 col-md-offset-5">
+                        <button type="button" id="save" class="btn btn-large btn-block btn-success" disabled="disabled">Guardar</button>
+                    </div>
+                </div>
+            </div>
+            <div class="panel-footer">
+                <label>Toth!</label>
+            </div>
+        </div>
+    </div>
+    <!-- jQuery -->
+    <script type="text/javascript" src="//code.jquery.com/jquery.js"></script>
+    <!-- Bootstrap text/javascript -->
+    <script type="javascript" src="//netdna.bootstrapcdn.com/bootstrap/3.1.1/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+    $(document).ready(function() {
+        $("#port").keydown(function(event) {
+            // Allow only backspace and delete
+            if (event.keyCode == 46 || event.keyCode == 8) {
+                // let it happen, don't do anything
+            } else {
+                // Ensure that it is a number and stop the keypress
+                if (event.keyCode < 48 || event.keyCode > 57) {
+                    event.preventDefault();
+                }
+            }
+        });
+        $('#aetitle , #port , #ip , #name , #send').click(function(event) {
+            $(this).parent().removeClass('has-error has-feedback');
+        });
+        $('#test').click(function(event) {
+            var nulos = 0;
+            $('#aetitle , #port , #ip').each(function(index, el) {
+                if ($(el).val() == "") {
+                    $(el).parent().addClass('has-error has-feedback')
+                    nulos = 1;
+                }
+            });
+            if (nulos == 0) {
+                var ip = $('#ip').val();
+                var name = $('#name').val();
+                var port = $('#port').val();
+                var aetitle = $('#aetitle').val();
+                var send = $('#send option:selected').val();
+                $.post('connectors/testConnection.php', {
+                    ip: ip,
+                    port: port,
+                    aetitle: aetitle.toUpperCase(),
+                }, function(data, textStatus, xhr) {
+                    var success = 0;
+                    var n = data.search("Success");
+                    var html = "";
+                    if (n >= 0) success = 1;
+                    if (success == 1) {
+                        html = '<div class="alert alert-success">' +
+                            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+                            'Conexión <strong>Exitosa!</strong> ...' +
+                            '</div>';
+                        $('#result').css('color', 'green');
+                        $("#save").removeAttr('disabled');
+                    } else {
+                        html = '<div class="alert alert-danger">' +
+                            '<button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>' +
+                            '<strong>Error!</strong> en la Conexión ...' +
+                            '</div>';
+                        $('#result').css('color', '#963132');
+                    }
+                    $('#msg').html(html);
+                    $('#result').html(data);
+                });
+            }
+        });
+        $('#save').click(function(event) {
+            var nulos = 0;
+            $('#aetitle , #port , #ip , #name , #send').each(function(index, el) {
+                if (el.type == "select-one") {
+                    if ($(el).find('option:selected').val() == "") {
+                        $(el).parent().addClass('has-error has-feedback')
+                        nulos = 1;
+                    }
+                } else {
+                    if ($(el).val() == "") {
+                        $(el).parent().addClass('has-error has-feedback')
+                        nulos = 1;
+                    }
+                }
+            });
+            if (nulos == 0) {
+                var ip = $('#ip').val();
+                var name = $('#name').val();
+                var port = $('#port').val();
+                var aetitle = $('#aetitle').val();
+                var send = $('#send option:selected').val();
+                $.post('connectors/saveNodes.php', {
+                    ip: ip,
+                    port: port,
+                    name: name,
+                    send: send,
+                    aetitle: aetitle,
+                    type: 'r'
+                }, function(data, textStatus, xhr) {
+                    $('#aetitle , #port , #ip , #name , #send').each(function(index, el) {
+                        $(el).parent().addClass('has-success has-feedback')
+                        $(el).attr('disabled', 'disabled');
+                        $("#save").attr('disabled', 'disabled');
+                        $("#save").attr('id', 'guardar');
+                    });
+                });
+            }
+        });
+    });
+    </script>
+</body>
+
+</html>

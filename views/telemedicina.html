@@ -1,0 +1,284 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+  <title>Toth</title>
+</head>
+<body> 
+<div id="menuTop"></div>
+<div class="container">
+  
+
+  <div class="row all">
+        <br>
+        
+            
+            <div class="row">
+                <div class="card">
+                    <div class="input-field col s8">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <input value='-' id="roomState" type="text" class="validate" readonly>
+                        <label for="roomState">Estado sala</label>
+                    </div>
+                    <div class="input-field col s1">
+                        <a class="btn-floating teal waves-effect waves-light" ><i class="material-icons">refresh</i></a>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">settings_input_antenna</i>
+                        <input value='-' id="showId" type="text" class="validate" readonly>
+                        <label for="showId">ID conexion</label>
+                    </div>
+                    <div class="input-field col s12 hidePassword">
+                        <i class="material-icons prefix">vpn_key</i>
+                        <input value='-' id="showPassword" type="text" class="validate" readonly>
+                        <label for="showPassword">Contraseña</label>
+                    </div>
+                    <div class="input-field col s12 center-align">
+                        <a class="waves-effect waves-light btn teal roundBtn" id="shareButtom">
+                            <i class="material-icons left">share</i> Compartir
+                        </a>
+                    </div>
+                    <div class="input-field col s12">
+                        <i class="material-icons prefix">perm_contact_calendar</i>
+                        <label for="users">Usuarios</label>
+                        <br>
+                        <br>
+                        <span id='usersList'>
+                        </span>
+                    </div>
+                </div>
+            </div>
+       
+    
+           
+                <div class="row">
+                    <div class="col s12 m12 l12">
+                        <ul class="collapsible" data-collapsible="accordion">
+                            <li>
+                                <div class="collapsible-header settings"><i class="material-icons">settings</i> Configuracion camara y video</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="input-field col s12 m3 l3" hidden>
+                                            <input type="text" class="validate" id="room-id" disabled>
+                                            <label for="room-id">Id de conexion</label>
+                                        </div>
+                                    </div>
+                                    <div class="row center-align">
+                                        <div class="col s12 m6 m6 l6">
+                                            <label for="audio-devices">Microfono:</label>
+                                            <select id="audio-devices" class="browser-default" disabled></select>
+                                            <br>
+                                            <button id="switch-microphone" class="waves-effect waves-light btn roundBtn" disabled>Cambiar microfono</button>
+                                        </div>
+                                        <div class="col s12 m6 m6 l6">
+                                            <label for="video-devices">Camara:</label>
+                                            <select id="video-devices" class="browser-default" disabled></select>
+                                            <br>
+                                            <button id="switch-camera" class="waves-effect waves-light btn roundBtn" disabled>Cambiar camara</button>
+                                        </div>
+                                        <br>
+                                    </div>
+                                </div>
+                            </li>
+                            <li class="toHide">
+                                <div class="collapsible-header examType"><i class="material-icons">view_quilt</i> Inicio</div>
+                                <div class="collapsible-body center-align ">
+                                    <div class="row">
+                                        <p class="flow-text" style=" padding: 0rem;"> Seleccione una opcion</p>
+                                        <br>
+                                        <div class="col s12 m6 l6" style="margin-bottom: 10px;">
+                                            <button id="open-room" type="button" class="waves-effect waves-light btn  btn-large teal roundBtn">
+                                                <i class="material-icons left noMarginLeft">voice_chat</i> Crear una sesion
+                                            </button>
+                                        </div>
+                                        <div class="col s12 m6 l6">
+                                            <button id="join-room" type="button" class="waves-effect waves-light btn btn-large teal roundBtn">
+                                                <i class="material-icons left noMarginLeft">phone_forwarded</i> Unirse a una sesion
+                                            </button>
+                                        </div>
+                                    </div>
+                                    <!--
+                                    <div class="row">
+                                        <br>
+                                        <div class="col s12 m12 l12">
+                                            <div class="btn-group examType" data-toggle="buttons">
+                                                <a class="waves-effect waves-light btn teal" style="margin: 3px;"> <span class="icon-i-ophthalmology fa-2x" aria-hidden="true"></span></a>
+                                                <a class="waves-effect waves-light btn grey" style="margin: 3px;"><span class="icon-i-dermatology fa-2x" aria-hidden="true"></span></a>
+                                                <a class="waves-effect waves-light btn grey" style="margin: 3px;"><span class="icon-i-hearing-assistance fa-2x" aria-hidden="true"></span></a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    -->
+                                </div>
+                            </li>
+                            <li class="">
+                                <div class="collapsible-header videoTab"><i class="material-icons">assignment</i> Procedimiento</div>
+                                <div class="collapsible-body">
+                                    <div class="row ">
+                                        <!--
+                                    <div class="row">
+                                        <a class="waves-effect waves-light btn teal roundBtn" id='seeVideo'>Continuar</a>
+                                    </div>
+                                    -->
+                                        <br>
+                                        <div class="col s12 m12 l12">
+                                            <div class="fixed-action-btn horizontal right" style="     bottom: 10px !important;   margin-bottom: -60px !important;position: relative !important;">
+                                                <a class="btn-floating btn-large teal tooltipped " data-position="top" data-delay="50" data-tooltip="Configuraciones">
+                                                    <i class="large material-icons">phonelink_setup</i>
+                                                </a>
+                                                <ul>
+                                                    <li>
+                                                        <a class="btn-floating waves-effect waves-light " id="pauseVideo" hidden>
+                                                            <i id="muteVideoIcon" class="material-icons">videocam</i></a>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="btn-floating waves-effect waves-light" id="muteAudio">
+                                                            <i id="muteAudioIcon" class="material-icons">mic_none</i>
+                                                        </a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="btn-floating waves-effect waves-light red" id="endCall">
+                                                            <i class="material-icons">call_end</i></button>
+                                                        </a>
+                                                    </li>
+                                                </ul>
+                                                <ul style="top: 80px;">
+                                                    <span class="leftOrRight">
+                                                        <li>
+                                                            <a class="btn-floating waves-effect waves-light btn teal " id="leftButton">
+                                                                <i class="material-icons">arrow_back</i></button>
+                                                            </a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="btn-floating waves-effect waves-light btn grey" id="rightButton">
+                                                                <i class="material-icons">arrow_forward</i></button>
+                                                            </a>
+                                                        </li>
+                                                    </span>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                        <div class="col s12 m12 l12 center-align">
+                                            <div id="oneWayVideo"></div>
+                                            <canvas hidden id="singleCanvas"></canvas>
+                                        </div>
+                                        <div class="col s12 m12 l12">
+                                            <div class="row center-align">
+                                                <div class="col s12 m12 l6" style="margin-bottom: 10px;">
+                                                    <button type="button" class="waves-effect waves-light btn-large roundBtn" id="takeSnapshot">
+                                                        <i class="material-icons left noMarginLeft">aspect_ratio</i> Capturar imagen
+                                                    </button>
+                                                </div>
+                                                <div class="col s12 m12 l6">
+                                                    <button id="openModalFooter" type="button" class="waves-effect waves-light btn-large roundBtn">
+                                                        <i class="material-icons left noMarginLeft">send</i> Terminar y enviar</button>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                            <li>
+                                <div class="collapsible-header videoTab"><i class="material-icons">aspect_ratio</i> Capturas</div>
+                                <div class="collapsible-body">
+                                    <div class="row">
+                                        <div class="col s12 m12 l12">
+                                            <div class="panel-body">
+                                                <div id="screenshotsLocal">
+                                                    <br>
+                                                    <div class=" row my-gallery">
+                                                        <div class="col s12  m12 l12">
+                                                            <span class="captures"></span>
+                                                        </div>
+                                                        <figure class="removeMe" hidden>
+                                                        </figure>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="pswp" tabindex="-1" role="dialog" aria-hidden="true">
+                                            <div class="pswp__bg"></div>
+                                            <div class="pswp__scroll-wrap">
+                                                <div class="pswp__container">
+                                                    <div class="pswp__item"></div>
+                                                    <div class="pswp__item"></div>
+                                                    <div class="pswp__item"></div>
+                                                </div>
+                                                <div class="pswp__ui pswp__ui--hidden">
+                                                    <div class="pswp__top-bar">
+                                                        <div class="pswp__counter"></div>
+                                                        <button class="pswp__button pswp__button--close" title="Close (Esc)"></button>
+                                                        <button class="pswp__button pswp__button--share" title="Share"></button>
+                                                        <button class="pswp__button pswp__button--fs" title="Toggle fullscreen"></button>
+                                                        <button class="pswp__button pswp__button--zoom" title="Zoom in/out"></button>
+                                                        <div class="pswp__preloader">
+                                                            <div class="pswp__preloader__icn">
+                                                                <div class="pswp__preloader__cut">
+                                                                    <div class="pswp__preloader__donut"></div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                    <div class="pswp__share-modal pswp__share-modal--hidden pswp__single-tap">
+                                                        <div class="pswp__share-tooltip"></div>
+                                                    </div>
+                                                    <button class="pswp__button pswp__button--arrow--left" title="Previous (arrow left)">
+                                                    </button>
+                                                    <button class="pswp__button pswp__button--arrow--right" title="Next (arrow right)">
+                                                    </button>
+                                                    <div class="pswp__caption">
+                                                        <div class="pswp__caption__center"></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+     
+
+</div>
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+  
+ 
+  
+    
+  });
+   
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>

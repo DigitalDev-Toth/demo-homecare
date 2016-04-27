@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+  <title>Toth</title>
+</head>
+<body> 
+<header>
+      <nav class="top-nav">
+        <div class="container">
+          <div class="nav-wrapper"><a class="page-title">SideNav</a></div>
+        </div>
+      </nav>
+      <div class="container"><a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a></div>
+      <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
+        <li class="logo"><a id="logo-container" href="http://materializecss.com/" class="brand-logo">
+            <object id="front-page-logo" type="image/svg+xml" data="res/materialize.svg">Your browser does not support SVG</object></a></li>
+        <li class="search">
+          <div class="search-wrapper card">
+            <input id="search"><i class="material-icons">search</i>
+            <div class="search-results"></div>
+          </div>
+        </li>
+        <li class="bold"><a href="about.html" class="waves-effect waves-teal">Sobre Materialize</a></li>
+        <li class="bold"><a href="getting-started.html" class="waves-effect waves-teal">Introducción</a></li>
+        <li class="bold"><a href="http://materializecss.com/mobile.html" class="waves-effect waves-teal">Mobile</a></li>
+        <li class="bold"><a href="showcase.html" class="waves-effect waves-teal">Vitrina</a></li>
+      </ul>
+</header>
+
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+    $(".button-collapse").sideNav();
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+ 
+  
+    
+  });
+   
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>

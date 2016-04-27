@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link rel="shortcut icon" type="image/png" href="images/toth_logo.png" />
+
+  <title>Toth</title>
+</head>
+<body> 
+   <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <div class="col offset-m2 offset-l2  s12 m8 l8">
+                <div class="card">
+                    <div class="card-content teal center-align waves-effect waves-block waves-light">
+                        <img src="../images/logo.png" alt="" style="max-width: 50%;">
+                    </div>
+                    <div class="container">
+                        <div class="row">
+                            <div class="login">
+                                <br>
+                                <br>
+                                <div class="form-group">
+                                    <label class="" for="form-username">Rut</label>
+                                    <input type="text" name="form-username" placeholder="11.111.111-1" class="form-username form-control" id="username">
+                                </div>
+                                <div class="form-group">
+                                    <label class="" for="form-password">Contraseña</label>
+                                    <input type="password" name="form-password" placeholder="ingrese su contraseña" class="form-password form-control" id="userPassword">
+                                </div>
+                                <br>
+                                <div class="row">
+                                    <div class="col s12 m12 l12  center-align">
+                                        <!--<button class="waves-effect waves-light btn " id="submit"><i class="material-icons "></i>Iniciar sesion</button>-->
+                                        <p class="margin medium-small"><a href="home.html">Iniciar sesion</a></p>
+                                    </div>
+                                    <br>
+                                    <br>
+                                    <div class="col s12 m12 l12  center-align">
+                                        <p class="margin medium-small"><a href="forgot-password.html">Recuperar contraseña</a></p>
+
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+
+   $(document).ready(function() {
+        $('select').material_select();
+        var username, userPassword;
+        $("#submit").click(function() {
+            username = $("#username").val();
+            userPassword = $("#userPassword").val();
+            if (username != '' && userPassword != '') {
+                console.log("peticion");
+                $.ajax({
+                    url: '/selectUserForLogin',
+                    type: 'POST',
+                    data: {
+                        username: username,
+                        userPassword: userPassword
+                    }
+                }).done(function(data) {
+                    console.log(data);
+                    if (data === 'done') {
+                        window.location.href = "/";
+                    } else {
+                        alert("Usuario o contraseña incorrectos");
+                    }
+                    console.log("success");
+                }).fail(function() {
+                    console.log("error");
+                }).always(function() {
+                    console.log("complete");
+                });
+            } else {
+                alert("usuario y contraseña obligatorios");
+            }
+        });
+
+    });
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>

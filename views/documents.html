@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+
+  <title>Toth</title>
+</head>
+<body> 
+  <div id="menuTop"></div>
+  <div class="container">
+        <br>
+        <br>
+        <div class="row">
+             <table class="responsive-table bordered highlight striped">
+                <thead>
+                  <tr>
+                      <th data-field="id">ID</th>
+                      <th data-field="name">Examen</th>
+                      <th data-field="name">Fecha</th>
+                      <th data-field="price">Estado</th>
+                      <th data-field="price">Informe</th>
+                      <th data-field="price">Visualizar</th>
+                  </tr>
+                </thead>
+
+                <tbody>
+                  <tr>
+                    <td>23</td>
+                    <td>OT</td>
+                    <td>2016-04-01</td>
+                    <td>Validado</td>
+                    <td><i class="material-icons">visibility</i></td>
+                    <td><a href="http://demo.biopacs.com/newbiopacs/mirror-std-v2/application/?study=237" target="_blank"><img src="../images/mirror.png" ></a></td>
+                  </tr>
+                  <tr>
+                    <td>235</td>
+                    <td>RM CEREBRO</td>
+                   <td>2016-03-05</td>
+                    <td>Validado</td>
+                    <td><i class="material-icons">visibility</i></td>
+                     <td><a href="http://demo.biopacs.com/newbiopacs/mirror-std-v2/application/?study=235" target="_blank"><img src="../images/mirror.png" ></a></td>
+                  </tr>
+                  <tr>
+                    <td>389</td>
+                    <td>OT </td>
+                    <td>2016-02-09</td>
+                    <td>Validado</td>
+                    <td><i class="material-icons">visibility</i></td>
+                     <td><a href="http://demo.biopacs.com/newbiopacs/mirror-std-v2/application/?study=237" target="_blank"><img src="../images/mirror.png" ></a></td>
+                  </tr>
+                </tbody>
+             </table>
+
+            
+        </div>
+   </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+ 
+  
+    
+  });
+   
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>

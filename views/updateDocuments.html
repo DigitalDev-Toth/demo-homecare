@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href='http://fonts.googleapis.com/css?family=Roboto:400,300,700,900|Roboto+Condensed:400,300,700' rel='stylesheet' type='text/css'>
+        <link rel="stylesheet" href="../bower_components/dropify-master/dist/css/demo.css">
+        <link rel="stylesheet" href="../bower_components/dropify-master/dist/css/dropify.min.css">
+
+  <title>Toth</title>
+</head>
+<body>
+   <div id="menuTop"></div> 
+  
+   <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            <span class="card-title grey-text text-darken-4"><h4>Almacenar estudios </h4><i class="material-icons right"></i></span>
+             
+            <div id="test1" class="col  s12">   
+              
+                   <label for="input-file-now">Nuevo documento</label>
+                   <input type="file" class="dropify" data-height="300" />
+               
+            </div>
+            <div id="test2" class="col  s12">   
+              
+                   <label for="input-file-now">Capturar Imagen</label>
+                    <div id="my_camera" ></div>
+
+                    <br>
+                    <br> 
+                    <div id="my_result"></div>
+               
+            </div>
+
+            <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a class="active blue-text" href="#test1">Subir documento</a></li>
+                            <li class="tab col s3"><a class="active blue-text" href="#test2">Tomar imagen</a></li>
+                        </ul>
+            </div>
+            
+        </div>
+        <div class="row center-align"> 
+          <a class="waves-effect waves-light btn"><i class="material-icons left">archive</i>Guardar</a>
+          <a id="capture" class="waves-effect waves-light btn" ><i class="material-icons right">camera_enhance</i>Capturar</a>
+        </div>
+   </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
+  <script src="../bower_components/dropify-master/dist/js/dropify.min.js"></script>
+  <script src="../bower_components/webcamjs/webcam.js"></script>
+  <script type="text/javascript">
+   Webcam.set({
+        width: 620,
+        height: 440,
+        dest_width: 640,
+        dest_height: 480,
+    });
+    function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+            } );
+    }
+
+  $(document).ready(function() {
+
+   Webcam.attach( '#my_camera' );
+
+      
+
+
+
+
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+   $('.dropify').dropify();
+ 
+   $('#capture').click(function(event) {
+        take_snapshot();
+    });
+    
+  });
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>

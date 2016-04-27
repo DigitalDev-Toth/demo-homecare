@@ -1,0 +1,417 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+
+  <title>Toth</title>
+</head>
+<body> 
+  <div id="menuTop"></div>
+  <div class="container">
+        <br>
+        <br>
+        <div class="row">
+            
+             <div class="col s12 m12 l12">
+                <div class="row center-align">
+                    <div id="test1" class="col s12 m12 l12">
+                      <div  id="glicemia" style=" width: 100%; max-width: 800px; margin: 0 auto" ></div>
+                    </div>
+                    <div id="test2" class="col s12 m12 l12">
+                        <div  id="hta" style=" width: 100%; max-width: 800px; margin: 0 auto" ></div>
+                    </div>
+                    <div id="test3" class="col s12 m12 l12">
+                        <div  id="peso" style=" width: 100%; max-width: 800px; margin: 0 auto" ></div>
+                    </div>
+                    <div id="test4" class="col s12 m12 l12">
+                        <div  id="fc" style=" width: 100%; max-width: 800px; margin: 0 auto" ></div>
+                    </div>
+                    <div id="test5" class="col s12 m12 l12">
+                        <div  id="pasos" style=" width: 100%; max-width: 800px; margin: 0 auto"></div>
+                    </div>
+                     <div class="col s12">
+                        <ul class="tabs">
+                            <li class="tab col s3"><a class="active teal white-text" href="#test1">Glicemia</a></li>
+                            <li class="tab col s3"><a class="teal white-text" href="#test2">HTA</a></li>
+                            <li class="tab col s3"><a class="teal white-text" href="#test3">Peso</a></li>
+                            <li class="tab col s3"><a class="teal white-text" href="#test4">FC 4</a></li>
+                            <li class="tab col s3"><a class="teal white-text" href="#test5">Pasos</a></li>
+                        </ul>
+                    </div>
+                </div>   
+             </div>
+             
+        </div>
+      
+   </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script src="../bower_components/Highcharts/js/highcharts.js"></script>
+  <script src="../bower_components/Highcharts/js/highcharts-more.js"></script>
+  <script src="../bower_components/Highcharts/js/modules/exporting.js"></script>
+
+
+
+  <script type="text/javascript">
+
+  $(document).ready(function() {
+
+       $('ul.tabs').tabs();
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+    
+   
+    $('#glicemia').highcharts({
+        chart: {
+            type: 'area',
+              zoomType: 'x'
+        },
+        title: {
+            text: 'Paciente'
+        },
+       
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+             title: {
+                    text: null
+                }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+                name: 'GLICEMIA',
+                data: [7.0, 6.9, 9.5, 14.5, 18.2, 21.5, 25.2, 26.5, 23.3, 18.3, 13.9, 9.6]
+            }],
+            exporting: {
+            buttons: {
+                buttonDay: {
+                    text: 'Dia',
+                    onclick: function () {
+                        
+                    }
+                },
+                buttonMonth: {
+                    text: 'Mes',
+                    onclick: function () {
+                       
+                    }
+                },
+               buttonYear: {
+                    text: 'Año',
+                    onclick: function () {
+                        
+                    }
+                }
+            }
+        }
+        });
+
+
+
+        $('#hta').highcharts({
+        chart: {
+            type: 'area',
+              zoomType: 'x'
+        },
+        title: {
+            text: 'Paciente'
+        },
+       
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+             title: {
+                    text: null
+                }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+                name: 'HTA',
+                data: [-0.2, 0.8, 5.7, 11.3, 17.0, 22.0, 24.8, 24.1, 20.1, 14.1, 8.6, 2.5]
+            }],
+            exporting: {
+            buttons: {
+                buttonDay: {
+                    text: 'Dia',
+                    onclick: function () {
+                        
+                    }
+                },
+                buttonMonth: {
+                    text: 'Mes',
+                    onclick: function () {
+                       
+                    }
+                },
+               buttonYear: {
+                    text: 'Año',
+                    onclick: function () {
+                        
+                    }
+                }
+            }
+        }
+        }); 
+    
+
+    $('#peso').highcharts({
+        chart: {
+            type: 'area',
+              zoomType: 'x'
+        },
+        title: {
+            text: 'Paciente'
+        },
+       
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+             title: {
+                    text: null
+                }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+                name: 'PESO',
+                data: [-0.9, 0.6, 3.5, 8.4, 13.5, 17.0, 18.6, 17.9, 14.3, 9.0, 3.9, 1.0]
+            }],
+            exporting: {
+            buttons: {
+                buttonDay: {
+                    text: 'Dia',
+                    onclick: function () {
+                        
+                    }
+                },
+                buttonMonth: {
+                    text: 'Mes',
+                    onclick: function () {
+                       
+                    }
+                },
+               buttonYear: {
+                    text: 'Año',
+                    onclick: function () {
+                        
+                    }
+                }
+            }
+        }
+        });
+
+
+         $('#fc').highcharts({
+        chart: {
+            type: 'area',
+              zoomType: 'x'
+        },
+        title: {
+            text: 'Paciente'
+        },
+       
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+             title: {
+                    text: null
+                }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+                name: 'FC',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }],
+            exporting: {
+            buttons: {
+                buttonDay: {
+                    text: 'Dia',
+                    onclick: function () {
+                        
+                    }
+                },
+                buttonMonth: {
+                    text: 'Mes',
+                    onclick: function () {
+                       
+                    }
+                },
+               buttonYear: {
+                    text: 'Año',
+                    onclick: function () {
+                        
+                    }
+                }
+            }
+        }
+        });
+
+
+
+        $('#pasos').highcharts({
+        chart: {
+            type: 'area',
+              zoomType: 'x'
+        },
+        title: {
+            text: 'Paciente'
+        },
+       
+        xAxis: {
+            categories: ['Ene', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dic'],
+            tickmarkPlacement: 'on',
+            title: {
+                enabled: false
+            }
+        },
+        yAxis: {
+             title: {
+                    text: null
+                }
+        },
+        tooltip: {
+            crosshairs: true,
+            shared: true
+        },
+        plotOptions: {
+            area: {
+                stacking: 'normal',
+                lineColor: '#666666',
+                lineWidth: 1,
+                marker: {
+                    lineWidth: 1,
+                    lineColor: '#666666'
+                }
+            }
+        },
+        series: [{
+                name: 'PASOS',
+                data: [3.9, 4.2, 5.7, 8.5, 11.9, 15.2, 17.0, 16.6, 14.2, 10.3, 6.6, 4.8]
+            }],
+            exporting: {
+            buttons: {
+                buttonDay: {
+                    text: 'Dia',
+                    onclick: function () {
+                        
+                    }
+                },
+                buttonMonth: {
+                    text: 'Mes',
+                    onclick: function () {
+                       
+                    }
+                },
+               buttonYear: {
+                    text: 'Año',
+                    onclick: function () {
+                        
+                    }
+                }
+            }
+        }
+        });  
+
+
+});
+
+    
+ 
+
+
+
+  </script>
+
+  </body>
+</html>

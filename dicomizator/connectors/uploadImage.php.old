@@ -1,0 +1,86 @@
+<?php
+
+if (empty($_FILES['files'])) {
+    echo json_encode(['error'=>'No files found for upload.']);
+    // or you can throw an exception
+    return; // terminate
+}
+
+// get the files posted
+$pdfs = $_FILES['files'];
+
+$success = null;
+$paths= [];
+// get file names
+$filenames = $pdfs['name'];
+// loop and process files
+/*
+for($i=0; $i < count($filenames); $i++){
+    $ext = explode('.', basename($filenames[$i]));
+    $target = "../../../uploads/pdfs/".$_REQUEST['calendar'] . "." . array_pop($ext);
+    if(move_uploaded_file($pdfs['tmp_name'][$i], $target)) {
+        $success = true;
+        $paths[] = $target;
+    } else {
+        $success = false;
+        break;
+    }
+}
+*/
+$ext = explode('.', basename($filenames));
+$fileDate = date("Y-m-d H:i:s");
+
+$path = "/var/www/dicomizator/images/jpg/";
+$imageNumber = $_REQUEST['imageNumber'];
+$img = $path."webcam0.jpg";
+if( file_exists($img) ){
+    for ($i=0; $i < 100; $i++) {
+        if(!file_exists($path."webcam".$i.".jpg")){
+            $img = $path."webcam".$i.".jpg";
+            break;
+        }
+    }
+}
+if (!file_exists($path)) {
+    mkdir($path, 0777, true);
+}
+$target = $path."/".$fileDate.".". array_pop($ext);
+
+if(move_uploaded_file($pdfs['tmp_name'], $img)) {
+    $success = true;
+    $paths[] = $target;
+    chmod($img, 0777);
+} else {
+    $success = false;
+    break;
+}
+
+// check and process based on successful status
+if ($success === true) {
+	//$sql = "UPDATE calendar SET audio='$target', exam_state='audio' WHERE id=$calendar";
+	//$db->doSql($sql);
+	//$sql = "UPDATE calendar_exam SET exam_state='audio' WHERE calendar=$calendar";
+	//$db->doSql($sql);
+    // call the function to save all data to database
+    // code for the following function `save_data` is not
+    // mentioned in this example
+
+    // store a successful response (default at least an empty array). You
+    // could return any additional response info you need to the plugin for
+    // advanced implementations.
+    $output = [];
+    // for example you can get the list of files uploaded this way
+    // $output = ['uploaded' => $paths];
+} elseif ($success === false) {
+    $output = ['error'=>'Error while uploading audios. Contact the system administrator'];
+    // delete any uploaded files
+    foreach ($paths as $file) {
+        unlink($file);
+    }
+} else {
+    $output = ['error'=>'No files were processed.'];
+}
+
+// return a json encoded response for plugin to process successfully
+echo json_encode($output);
+?>

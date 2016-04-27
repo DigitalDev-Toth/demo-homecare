@@ -1,0 +1,1 @@
+/usr/bin/echoscu -v -aec BIOPACS-RIS 192.168.0.210 104
