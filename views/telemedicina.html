@@ -13,16 +13,59 @@
 
   <title>Toth</title>
 </head>
-<body> 
-<div id="menuTop"></div>
-<div class="container">
-  
+<body>
+ <header>
+     <ul id="dropdown1" class="dropdown-content">
+        <li><a href="#!">Configuración</a></li>
+        <li><a href="login.html">Cerrar sesión</a></li>
+    </ul>
+     <nav class="top-nav teal">
+      <div class="container">
+        <a href="home.html"><img src="../images/toth_logo.png" alt="" style="height: 30px;margin-top: 15px;margin-left: 10px;"> </a>
+        <a href="home.html" class="brand-logo center">Homecare</a>
+          <ul class="right hide-on-med-and-down">
+            <li><a class="dropdown-button" href="#!" data-activates="dropdown1">Opciones<i class="material-icons right">arrow_drop_down</i></a></li> 
+          </ul>
+      </div>
+     </nav>
+      <div class="container">
+      <a href="#" data-activates="nav-mobile" class="button-collapse top-nav full hide-on-large-only"><i class="material-icons">menu</i></a>
+      </div>
+      <ul id="nav-mobile" class="side-nav fixed" style="transform: translateX(0px);">
 
+        <div class="row">
+                <div class="card">
+                    <div class="card-image waves-effect waves-block waves-light">
+                        <img src="../images/icon-user-default.png" alt="" class="circle responsive-img center-block activator" style="width: 80%  ;">
+                    </div>
+                    <div class="card-content">
+                        <span class="card-title activator grey-text text-darken-4"><span id='patientName'></span><i class="material-icons right">more_vert</i></span>
+                        <p id="patientRut"></p>
+                    </div>
+                    <div class="card-reveal">
+                        <span class="card-title grey-text text-darken-4">Ficha<i class="material-icons right">close</i></span>
+                        <p>
+
+                            <p><strong>Sexo: </strong><span id="patientSex"></span>28 </p>
+                            <p><strong>Edad: </strong><span id="patientBday"></span>M</p>
+                            <a href="profile.html" class="waves-effect waves-teal"><i class="material-icons">zoom_in</i>Mas información</a>
+                            
+                        </p>
+                    </div>
+                </div>
+            </div>
+        <li class="bold"><a href="documents.html" class="waves-effect waves-teal"><i class="material-icons">library_books</i>Mis estudios</a></li>
+        <li class="bold"><a href="updateDocuments.html" class="waves-effect waves-teal"><i class="material-icons">note_add</i>Subir imagenes</a></li>
+        <li class="bold"><a href="telemedicina.html" class="waves-effect waves-teal"><i class="material-icons">add_to_queue</i>Telemedicina</a></li>
+        <li class="bold"><a href="#" class="waves-effect waves-teal"><i class="material-icons">local_hospital</i>Medicamentos</a></li>
+        <li class="bold"><a href="triage.html" class="waves-effect waves-teal"><i class="material-icons">perm_contact_calendar</i>Triage</a></li>
+      </ul>
+</header>
+<div class="container">
   <div class="row all">
         <br>
-        
-            
             <div class="row">
+                <span class="card-title grey-text text-darken-4"><h4>Almacenar estudios </h4><i class="material-icons right"></i></span>
                 <div class="card">
                     <div class="input-field col s8">
                         <i class="material-icons prefix">perm_contact_calendar</i>
@@ -169,7 +212,8 @@
                                             </div>
                                         </div>
                                         <div class="col s12 m12 l12 center-align">
-                                            <div id="oneWayVideo"></div>
+                                            <!--<div id="oneWayVideo"></div>-->
+                                            <div id="my_camera" ></div>
                                             <canvas hidden id="singleCanvas"></canvas>
                                         </div>
                                         <div class="col s12 m12 l12">
@@ -196,13 +240,15 @@
                                             <div class="panel-body">
                                                 <div id="screenshotsLocal">
                                                     <br>
-                                                    <div class=" row my-gallery">
+
+                                                    <div id="my_result"></div>
+                                                    <!--<div class=" row my-gallery">
                                                         <div class="col s12  m12 l12">
                                                             <span class="captures"></span>
                                                         </div>
                                                         <figure class="removeMe" hidden>
                                                         </figure>
-                                                    </div>
+                                                    </div>-->
                                                 </div>
                                             </div>
                                         </div>
@@ -261,24 +307,26 @@
   <script src="../bower_components/materialize/js/materialize.js"></script>
   <script src="../bower_components/materialize/js/init.js"></script>
   <script type="text/javascript">
+    Webcam.set({
+        width: 620,
+        height: 440,
+        dest_width: 640,
+        dest_height: 480,
+    });
+    function take_snapshot() {
+            Webcam.snap( function(data_uri) {
+                document.getElementById('my_result').innerHTML = '<img src="'+data_uri+'"/>';
+            } );
+    }
    $(document).ready(function() {
-
+    Webcam.attach( '#my_camera' );
+    $('#takeSnapshot').click(function(event) {
+        take_snapshot();
+    });
    $.get('menuTop.html', function(data) {
         $("#menuTop").html(data);
-      
     });
-  
- 
-  
-    
   });
-   
-    
-
-
-
-
   </script>
-
   </body>
 </html>
