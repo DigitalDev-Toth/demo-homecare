@@ -9,6 +9,7 @@
   <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
   <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
   <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link rel="shortcut icon" type="image/png" href="../images/toth_logo.png" />
 
 
   <title>Toth</title>
@@ -19,6 +20,7 @@
         <br>
         <br>
         <div class="row">
+             <span class="card-title grey-text text-darken-4"><h4>Mis estudios</h4><i class="material-icons right"></i></span>
              <table class="responsive-table bordered highlight striped">
                 <thead>
                   <tr>
@@ -42,11 +44,11 @@
                   </tr>
                   <tr>
                     <td>235</td>
-                    <td>RM CEREBRO</td>
+                    <td>CEREBRO (30 CORTES 8-10 MM.)</td>
                    <td>2016-03-05</td>
                     <td>Validado</td>
-                    <td><i class="material-icons">visibility</i></td>
-                     <td><a href="http://demo.biopacs.com/newbiopacs/mirror-std-v2/application/?study=235" target="_blank"><img src="../images/mirror.png" ></a></td>
+                    <td><a class="modal-trigger" href="#modal1"><i class="material-icons">visibility</i></td>
+                    <td><a href="http://demo.biopacs.com/newbiopacs/mirror-std-v2/application/?study=235" target="_blank"><img src="../images/mirror.png" ></a></td>
                   </tr>
                   <tr>
                     <td>389</td>
@@ -58,6 +60,30 @@
                   </tr>
                 </tbody>
              </table>
+
+
+               <!-- Modal Structure -->
+                <div id="modal1" class="modal">
+                  <div class="modal-content">
+                    <h4>TAC. CEREBRAL</h4>
+                    <p>INFORME:
+                        Cuarto ventrículo de conformación, posición y volumen normal.
+                        Tronco cerebral sin alteraciones.
+                        Extensa lesión de aspecto hipodensa, que compromete la porción posteromedial y basal del hemisferio
+                        cerebeloso derecho.
+                        Cisternas basales y peritroncales libres.
+                        Región selar sin alteraciones.
+                        Sistema ventricular supratentorial de forma, posición y volumen normal.
+                        No se visualizan alteraciones en los núcleos grises centrales, sustancia blanca ni corteza cerebral.
+                        No se observa efectos de masa ni captaciones anormales de medio de contraste.
+                        dilatación moderada y global del espacio subaracnoídeo cortical.
+                        No se observan colecciones yuxtadurales.
+                    </p>
+                  </div>
+                  <div class="modal-footer">
+                    <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Cerrar</a>
+                  </div>
+                </div>
 
             
         </div>
@@ -74,6 +100,7 @@
   <script src="../bower_components/materialize/js/init.js"></script>
   <script type="text/javascript">
    $(document).ready(function() {
+    $('.modal-trigger').leanModal();
 
    $.get('menuTop.html', function(data) {
         $("#menuTop").html(data);

@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0"/>
+
+
+  <!-- CSS  -->
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+  <link href="../bower_components/materialize/css/materialize.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+  <link href="../bower_components/materialize/css/style.css" type="text/css" rel="stylesheet" media="screen,projection"/>
+   <link rel="shortcut icon" type="image/png" href="../images/toth_logo.png" />
+
+
+  <title>Toth</title>
+</head>
+<body> 
+  <div id="menuTop"></div>
+  <div class="container">
+        <br>
+        <br>
+        <div class="row">
+             <span class="card-title grey-text text-darken-4"><h4>Mis medicamentos</h4><i class="material-icons right"></i></span>
+             <table class="responsive-table bordered highlight striped">
+                <thead>
+                  <tr>
+                      <th data-field="id">Medicamento</th>
+                      <th data-field="name">Dosis</th>
+                      <th data-field="name">Hora</th>
+                      <th data-field="name">Estado</th>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td>Paracetamol</td>
+                    <td>Vial 1gr/100ml (10mgr/ml)</td>
+                    <td>11:02 PM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span> 
+                          </label>
+                        </div></td>
+                  </tr>
+                   <tr>
+                    <td>Procainamida</td>
+                    <td>Ampollas de 10ml/1gr</td>
+                    <td>18:02 PM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                          </label>
+                        </div></td></td>
+                  </tr>
+                  <tr>
+                    <td>Succinilcolina</td>
+                    <td>Ampollas 2ml/200mgr (1mgr/ml)</td>
+                    <td>19:02 PM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                          </label>
+                        </div></td></td>
+                  </tr>
+                  <tr>
+                    <td>Verapamilo</td>
+                    <td>Ampollas 2ml/5mgr.</td>
+                    <td>11:25 AM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                          </label>
+                        </div></td></td>
+                  </tr>
+                  <tr>
+                    <td>Sulpiride</td>
+                    <td>Ampollas de 2ml/100mgr</td>
+                    <td>09:02 AM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                          </label>
+                        </div></td></td>
+                  </tr>
+                  <tr>
+                    <td>Ranitidina</td>
+                    <td>Ampollas de 5ml/50mgr</td>
+                    <td>07:08 PM</td>
+                    <td><div class="switch">
+                          <label>
+                            <input type="checkbox">
+                            <span class="lever"></span>
+                          </label>
+                        </div></td></td>
+                  </tr>
+                </tbody>
+             </table>
+          <br>  
+          <br>  
+          <br>     
+          <div class="center-align">
+             <a class="btn-floating btn-large waves-effect waves-light red modal-trigger" href="#modal1"><i class="material-icons">add</i></a>
+          </div>
+           <!-- Modal Structure -->
+          <div id="modal1" class="modal">
+            <div class="modal-content">
+              <h4>Nueva alarma</h4>
+              <p><div class="row">
+                  <form class="col s12">
+                    <div class="row">
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">local_hospital</i>
+                        <input id="icon_prefix" type="text" class="validate">
+                        <label for="icon_prefix">Medicamento</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">invert_colors</i>
+                        <input id="icon_telephone" type="tel" class="validate">
+                        <label for="icon_telephone">Dosis</label>
+                      </div>
+                      <div class="input-field col s12">
+                        <i class="material-icons prefix">alarm</i>
+                        <input id="icon_telephone" type="tel" class="validate">
+                        <label for="icon_telephone">Hora</label>
+                      </div>
+                    </div>
+
+                  </form>
+                </div></p>
+            </div>
+            <div class="modal-footer">
+              <a href="#!" class=" modal-action modal-close waves-effect waves-green btn-flat">Guardar</a>
+            </div>
+          </div> 
+        </div>
+   </div>
+
+
+
+
+
+  <!--  Scripts-->
+  <script src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+  <script src="../bower_components/js/jquery-2.2.3.min.js"></script>
+  <script src="../bower_components/materialize/js/materialize.js"></script>
+  <script src="../bower_components/materialize/js/init.js"></script>
+  <script type="text/javascript">
+   $(document).ready(function() {
+     $('.modal-trigger').leanModal();
+   $.get('menuTop.html', function(data) {
+        $("#menuTop").html(data);
+      
+    });
+ 
+  
+    
+  });
+   
+    
+
+
+
+
+  </script>
+
+  </body>
+</html>
